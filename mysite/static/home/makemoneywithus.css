@@ -1,0 +1,36 @@
+div{
+  display:inline-block;
+  margin:0.0001em;  padding:.0001em;
+  cursor:pointer;
+  background:#ffffff00;  color:#666;
+}
+#pulse:hover{
+  animation: pulse 0.5s ease-in infinite;
+}
+#push:hover{
+  animation: pulse 0.3s linear .5;
+}
+#pop:hover{
+  animation: pop 0.3s linear 1;
+}
+@keyframes pulse{
+  25%  {transform: scale(0.9);}
+  75%  {transform: scale(1.1);}
+}
+@keyframes push{
+  50%  {transform: scale(0.8);}
+}
+@keyframes pop{
+ 35%  {transform: scale(0.2);}
+}
+.site-form{
+margin-top: 60px;
+border: 1px solid #00solid
+padding: 20px
+}
+
+.site-form input, site-form textarea{
+    display: block;
+    margin: 20px 0 0 0;
+    padding: 10px;
+}

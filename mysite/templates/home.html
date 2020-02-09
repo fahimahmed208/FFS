@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+  {% load static %}
+  <html lang="en">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <head>
+      <meta charset="UTF-8">
+      <title>FFS</title>
+  </head>
+  <body>
+
+
+  <nav class="navbar navbar-expand-sm navbar-dark bg-secondary " id ="navbarfixed">
+      <a href="?#" class="navbar-brand">dafnow.com</a>
+      <button class="navbar-toggler">
+        <span class="navbar-toggler-icon" data-toggle ="collapse" data-target="#navbarmenu">
+        </span>
+      </button>
+      <div class="collapse navbar-collapse", id ="navbarmenu",>
+
+        <ul class ="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a href="contact" class="nav-link">Contact Us</a>
+          </li>
+          <li class="nav-item">
+            <a href="mm" class="nav-link">Make Money With Us</a>
+          </li>
+      {% if user.is_authenticated %}
+      <li class="nav-item">
+        <a class="nav-link" href="mm/ac/myprofile">See Profile :  {{user.username}} </a>
+      </li>
+            <li class="nav-item">
+        <a class="nav-link" href="acc/logout">Log OUT Sir </a>
+      </li>
+
+
+
+<!--      <li class="nav-item">-->
+<!--            <from class="logout-link" action="acc/logout" method="POST"></from>-->
+<!--                {%csrf_token%}-->
+<!--            <button type="submit" >LOg ouT</button>-->
+
+<!--      </li>-->
+      {% else %}
+          <li class="nav-item">
+            <a href="acc/login" class="nav-link">LOG IN</a>
+          </li>
+          <li class="nav-item">
+            <a href="acc/reg" class="nav-link">SIGN UP</a>
+      </li>
+      {% endif %}
+      <li class="nav-item">
+        <a href="mm/st/showallstore/" class="nav-link">All Stores !!!</a>
+      </li>
+      <li class="nav-item">
+        <a href="pl/showall" class="nav-link">All Plans</a>
+      </li>
+
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+        <a href="mm/st/ursote" class="nav-link">Your Stores</a>
+      </li>
+            <li class="nav-item">
+        <a href="{% url 'dashboard' %}" class="nav-link">DASHBOARD</a>
+      </li>
+            {% endif %}
+
+<!--      <li class="nav-item">-->
+<!--        <a href="acc/reg/" class="nav-link">Sign UP</a>-->
+<!--      </li>-->
+
+<!--      <li class="nav-item">-->
+<!--        <a href="acc/login/" class="nav-link">Log IN</a>-->
+<!--      </li>-->
+          <!-- Search form -->
+        <form class="form-inline md-form form-sm active-cyan-2 mt-2"
+                action="{% url 'search' %}">
+            <input class="form-control form-control-sm mr-3 w-75" type="text" placeholder="Search"
+                aria-label="Search">
+             <i class="fas fa-search" aria-hidden="true"></i>
+        </form>
+        </ul>
+      </div>
+
+
+    </nav>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-dark ">
+
+
+        <a href="dl/showall" class="navbar-brand">Find a delivery boy for you </a>
+        {% if user.dguy %}
+        <a  href="{% url 'detailed_guy'  user.dguy.id %}"class="navbar-brand">See Your CV</a>
+        {% else %}
+        {% if user.is_authenticated %}
+
+
+        <a href="dl/add" class="navbar-brand mr right" >Apply as a delivery boy  </a>
+        {% else %}
+        <a href="acc/login" class="navbar-brand mr right" >LOG IN to apply as a delivery guy </a>
+        {%endif%}
+        {%endif%}
+
+    </nav>
+
+
+  <!--slider starts from here-->
+  <style type="text/css">
+
+    #slider {
+      overflow: hidden;
+    }
+    #slider figure {
+      position: relative;
+      width: 500%;
+      margin: 0;
+      left: 0;
+      animation: 20s slider infinite;
+    }
+    #slider figure img {
+      width: 20%;
+      float: left;
+    }
+
+    @keyframes slider {
+      0% {
+        left: 0;
+      }
+      20% {
+        left: 0;
+      }
+      25% {
+        left: -100%;
+      }
+      45% {
+        left: -100%;
+      }
+      50% {
+        left: -200%;
+      }
+      70% {
+        left: -200%;
+      }
+      75% {
+        left: -300%;
+      }
+      95% {
+        left: -300%;
+      }
+      100% {
+        left: -400%;
+      }
+    }
+
+    </style>
+    </head>
+    <body>
+    <main role="main">
+    <main class="container" >
+        <div id="slider"  >
+        <figure>
+          <img alt="img0 being slided"src="{% static 'home/img/0.png' %}">
+          <img alt="img1 being slided" src="{% static 'home/img/1.png' %}">
+          <img alt="img2 being slided" src="{% static 'home/img/2.png' %}">
+          <img alt="img3 being slided"src="{% static 'home/img/3.png' %}">
+          <img alt="img4 being slided"src="{% static 'home/img/4.png' %}">
+        </figure>
+      </div>
+    </main>
+
+
+
+    </body>
+
+
+
+
+  </body>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </html>
+<main role="main">
+    <div class="container" >
+<h1 class="text-center pt-3">Welcome to Freelance Food Service </h1>
+<br/>
+    <h2>Top Shops in HOME</h2>
+        <hr/>
+         <div class="row">
+          {% for i in sts%}
+
+        <div class="col-md-3">
+          <div class="card mb-3 shadow">
+              <a href="{% url 'detailed_store' i.id %}">
+
+              <a href="{% url 'detailed_store' i.id %}">
+                   <h1 class="card-text"> {{i.name}}</h1>
+              </a>
+
+              <p> {{i.location}}</p>
+           <img class="card-img-top" src= "{{ i.thumbnail.url }}" alt="No image found!" />
+            <div class="card-body">
+              <p class="card-text">Category: {{i.category}}</p>
+            </div>
+              <div class="card-body">
+              <p class="card-text"> {{i.description}}</p>
+                <br/>
+              </a>
+            </div>
+               <br/>
+          </div>
+        </div>
+             <br/>
+
+          {% endfor %}
+      </div>
+
+    </div>
+
+
+</main>
+
+<footer class="text-muted">
+  <div class="container text-center">
+     <p>©️ TEAM-DAF {% now "Y" %}</p>
+  </div>
+</footer>
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
